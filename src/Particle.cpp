@@ -11,7 +11,7 @@ Particle::Particle(float x, float y, float xVelocity, float yVelocity, float xAc
 }
 
 //--------------------------------------------------------------
-void Particle::update()
+void Particle::update() // updates position, speed, size, and fade
 {
 	x += xVelocity;
 	y += yVelocity;
@@ -27,7 +27,7 @@ void Particle::update()
 	if (alpha < 0)
 		alpha = 0;
 	else
-		alpha -= 5;
+		alpha -= 3;
 }
 
 //--------------------------------------------------------------

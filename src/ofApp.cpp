@@ -1,4 +1,5 @@
 #include "ofApp.h"
+#include "Dallas Hall.hpp"
 
 //--------------------------------------------------------------
 
@@ -14,9 +15,10 @@ ofApp::~ofApp()
 
 void ofApp::setup()
 {
-    ofBackground(0);
+    ofBackground(3, 4, 6);
+    
     for (int i = 0; i < 10; i++) {
-        fireworks.push_back(new Firework(ofRandom(0,ofGetWidth()/2), ofRandom(ofGetHeight() - 100, ofGetHeight()), 5, 10, 1, 2));
+        fireworks.push_back(new Firework(ofRandom(0, ofGetWidth()), ofRandom(ofGetHeight() - 100, ofGetHeight()), PI, ofRandom(PI/4, PI/6), 3));
         fireworks[i]->setup();
     }
 }
@@ -27,9 +29,9 @@ void ofApp::update()
     for (int i = 0; i < 10; i++) {
         if (fireworks[i]->getY() > 100) {
             fireworks[i]->launch();
-        } else if (fireworks[i]->getY() <= 100)
+        } else
         {
-            fireworks[i]->explode();
+            fireworks[i]->updateParticles();
         }
     }
 }
@@ -37,11 +39,16 @@ void ofApp::update()
 //--------------------------------------------------------------
 void ofApp::draw()
 {
-    for (int i = 0; i < 10; i++) {
-        if (fireworks[i]->getY() > 100) {
+    DallasHall();
+    
+    for (int i = 0; i < 10; i++)
+    {
+        if (fireworks[i]->getY() > 100)
+        {
             fireworks[i]->display();
-        } else if (fireworks[i]->getY() <= 100){
-            fireworks[i]->display();
+        } else
+        {
+            fireworks[i]->displayParticles();
         }
     }
 }
