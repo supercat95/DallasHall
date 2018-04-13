@@ -1,6 +1,6 @@
 #include "Particle.h"
 
-Particle::Particle(float x, float y, float xVelocity, float yVelocity, float xAcceleration, float yAcceleration)
+Particle::Particle(float x, float y, float xVelocity, float yVelocity, float xAcceleration, float yAcceleration, float shrink, int resolution, int alpha)
 {
 	this->x = x;
 	this->y = y;
@@ -8,6 +8,9 @@ Particle::Particle(float x, float y, float xVelocity, float yVelocity, float xAc
 	this->yVelocity = yVelocity;
 	this->xAcceleration = xAcceleration;
 	this->yAcceleration = yAcceleration;
+    this->shrink = shrink;
+    this->resolution = resolution;
+    this->alpha = alpha;
 }
 
 //--------------------------------------------------------------
@@ -22,7 +25,7 @@ void Particle::update() // updates position, speed, size, and fade
 	if (size < 0)
 		size = 0;
 	else
-		size -= 0.1;
+        size -= shrink;
     
 	if (alpha < 0)
 		alpha = 0;
@@ -33,9 +36,6 @@ void Particle::update() // updates position, speed, size, and fade
 //--------------------------------------------------------------
 void Particle::draw()
 {
-	ofSetColor(255, 255, 0, alpha);
-    
-    // triangles
-	ofSetCircleResolution(3);
+	ofSetCircleResolution(resolution);
 	ofDrawCircle(x, y, size);
 }

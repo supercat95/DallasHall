@@ -2,6 +2,7 @@
 
 #include "ofMain.h"
 #include "Firework.hpp"
+#include "Water Fountain.hpp"
 
 #include <vector>
 
@@ -10,10 +11,11 @@ using std::vector;
 class ofApp : public ofBaseApp{
 
     vector <Firework*> fireworks;
+    vector <WaterFountain*> waterDroplets;
     
-    public:
-    ~ofApp();//destructor
 	public:
+        ~ofApp();
+    
 		void setup();
 		void update();
 		void draw();

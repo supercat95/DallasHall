@@ -10,7 +10,6 @@ DallasHall::DallasHall()
     columns();
     stairs();
     windows();
-//    overlay();
     trees();
 }
 
@@ -126,17 +125,6 @@ void DallasHall::windows()
             y = y + h + 10;
         }
     }
-}
-
-void DallasHall::overlay()
-{
-    // frieze- red triangle overlay
-    ofSetColor(255, 0, 0, 220);
-    ofDrawTriangle(332, 240, 465, 170, 598, 240);
-    
-    // freize- red rectangle overlay
-    ofSetColor(255, 0, 0, 220);
-    ofDrawRectangle(332, 242, 270, 20);
 }
 
 void DallasHall::trees()
